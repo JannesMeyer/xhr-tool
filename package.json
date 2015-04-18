@@ -1,9 +1,9 @@
 {
   "name": "xhr-tool",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "XMLHttpRequest with Promises",
   "keywords": [ "xhr", "promises", "es6" ],
-  "author": "Jannes Meyer <jannes.meyer@gmail.com>",
+  "author": "Jannes Meyer <jannes.meyer@gmail.com> (http://jannesmeyer.com/)",
   "license": "GPLv3",
   "repository": "JannesMeyer/xhr-tool",
   "scripts": {
