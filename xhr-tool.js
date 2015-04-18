@@ -1,7 +1,7 @@
 /**
- * Sends an asynchronous JSON request
+ * Sends an asynchronous request and returns a Promise for the parsed JSON response
  */
-function getJSON(url, callback) {
+function getJSON(url) {
 	var res = Promise.defer();
 	var req = new XMLHttpRequest();
 	req.onload = function() {
