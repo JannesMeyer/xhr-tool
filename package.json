@@ -9,7 +9,7 @@
   "scripts": {
     "test": "make test"
   },
-  "main": "xhr-tool.js",
+  "main": "index.js",
   "devDependencies": {
     "jasmine": "^2.2.1"
   }
