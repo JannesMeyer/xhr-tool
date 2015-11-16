@@ -1,6 +1,6 @@
 {
   "name": "xhr-tool",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "XMLHttpRequest with Promises (in the browser)",
   "keywords": [ "xhr", "promises", "es6" ],
   "author": "Jannes Meyer <jannes.meyer@gmail.com>",
