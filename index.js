@@ -16,7 +16,12 @@ function getJSON(url) {
 		// Build XmlHttpRequest object
 		var req = new XMLHttpRequest();
 		req.onload = function() {
-			resolve(JSON.parse(req.response));
+			if (req.status < 200 || req.status >= 400) return reject(new Error('Error ' + req.status));
+			try {
+				resolve(JSON.parse(req.response));
+			} catch (err) {
+				reject(err);
+			}
 		};
 		req.onerror = reject.bind(null, new Error('Error ' + req.status));
 		req.ontimeout = reject.bind(null, new Error('Request timeout'));
@@ -27,3 +32,4 @@ function getJSON(url) {
 	});
 }
 exports.getJSON = getJSON;
+;
