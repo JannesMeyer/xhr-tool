@@ -32,4 +32,3 @@ function getJSON(url) {
 	});
 }
 exports.getJSON = getJSON;
-;
