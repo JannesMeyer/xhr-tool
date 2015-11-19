@@ -4,7 +4,7 @@
   "description": "XMLHttpRequest with Promises (in the browser)",
   "keywords": [ "xhr", "promises", "es6" ],
   "author": "Jannes Meyer <jannes.meyer@gmail.com>",
-  "license": "LGPLv3",
+  "license": "LGPL-3.0",
   "repository": "JannesMeyer/xhr-tool",
   "scripts": {
     "test": "make test"
