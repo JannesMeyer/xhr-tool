@@ -1,0 +1,1 @@
+export function getJSON(url: string): PromiseLike<any>;

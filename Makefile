@@ -1,14 +1,19 @@
-JASMINE=./node_modules/.bin/jasmine
+BABEL = ./node_modules/.bin/babel
 
+.PHONY: all
 all: node_modules
+	@$(BABEL) . --out-dir . --ignore "node_modules" --extensions ".es6"
 
-test: all
-	$(JASMINE)
+.PHONY: watch
+watch: node_modules
+	@$(BABEL) . -w --out-dir . --ignore "node_modules" --extensions ".es6"
 
-test-without-color: all
-	$(JASMINE) --no-color
+.PHONY: clean
+clean:
+	-rm -f *.log *.js ./spec/*.js
 
 node_modules:
 	npm install
 
-.PHONY: all test test-without-color
+%.js:: %.es6
+	$(BABEL) $< --out-file $@

@@ -1,16 +1,20 @@
 {
   "name": "xhr-tool",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "XMLHttpRequest with Promises (in the browser)",
-  "keywords": [ "xhr", "promises", "es6" ],
+  "keywords": [
+    "xhr", "promises", "es6"
+  ],
   "author": "Jannes Meyer <jannes.meyer@gmail.com>",
   "license": "LGPL-3.0",
   "repository": "JannesMeyer/xhr-tool",
-  "scripts": {
-    "test": "make test"
-  },
   "main": "index.js",
+  "typings": "index.d.ts",
+  "scripts": {
+    "prepublish": "make clean && make",
+    "test": "./node_modules/.bin/jasmine"
+  },
   "devDependencies": {
-    "jasmine": "^2.2.1"
+    "jasmine": "^2.4.1"
   }
 }
