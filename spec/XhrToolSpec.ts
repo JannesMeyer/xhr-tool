@@ -1,4 +1,4 @@
-var getJSON = require('..').getJSON;
+import { getJSON } from '..';
 
 describe('getJSON', function() {
 	it('exists', function() {
