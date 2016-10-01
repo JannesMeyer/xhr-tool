@@ -1,40 +1,40 @@
 /**
- * Sends an asynchronous request and returns a Promise for the parsed JSON response
+ * Sends an asynchronous HTTP request and returns a Promise
  *
- * @param url The URL to fetch and parse
+ * @param url The URL to fetch
  */
-function getJSON(url) {
+function request(method, url, accept) {
+  if (typeof XMLHttpRequest === 'undefined') {
+    throw new Error('XMLHttpRequest not available');
+  }
+
   return new Promise(function(resolve, reject) {
-    if (typeof url !== 'string') {
-      reject(new TypeError('First argument has to be a string'));
-      return;
-    }
-    if (typeof XMLHttpRequest === 'undefined') {
-      reject(new Error('XMLHttpRequest not available'));
-      return;
-    }
-    // Build XmlHttpRequest object
+    // Create request
     var req = new XMLHttpRequest();
-    req.open('GET', url);
-    req.setRequestHeader('Accept', 'application/json');
-    req.onload = function() {
-      if (req.status < 200 || req.status >= 400) {
-        return reject(new Error('Error ' + req.status));
-      }
-      try {
-        resolve(JSON.parse(req.response));
-      } catch (err) {
-        reject(err);
+    req.onreadystatechange = function() {
+      if (req.readyState === 4) {
+        if (200 <= req.status && req.status < 300) {
+          resolve(req.responseText);
+        } else {
+          reject(new Error(req.status + ' ' + req.statusText));
+        }
       }
     };
-    req.onerror = function() {
-      reject(new Error('Error ' + req.status));
-    };
-    req.ontimeout = function() {
-      reject(new Error('Request timeout'));
-    };
-    // Send request
+
+    // Open
+    req.open(method, url, true);
+    if (accept != null) {
+      req.setRequestHeader('Accept', accept);
+    }
+
+    // Start fetching
     req.send();
   });
 }
+
+function getJSON(url) {
+  return send('GET', url, 'application/json').then(JSON.parse);
+}
+
+exports.request = request;
 exports.getJSON = getJSON;

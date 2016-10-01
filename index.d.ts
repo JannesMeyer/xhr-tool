@@ -1,1 +1,2 @@
-export function getJSON(url: string): PromiseLike<any>;
+export function request(method: string, url: string, accept?: string): PromiseLike<string>;
+export function getJSON<T>(url: string): PromiseLike<T>;
